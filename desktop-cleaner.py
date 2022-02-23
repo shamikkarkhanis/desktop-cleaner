@@ -4,32 +4,48 @@
 # imports
 import time, os, shutil
 
-# Removes all files from source directory and transfers to destination directory
+def createDirectory(direc):
+    if not os.path.exists(direc):
+        os.makedirs(direc)
+
+source = '/Users/shamikkarkhanis/Desktop/'
+mediaDes = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/media/'
+imgDes = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/img/'
+ssDes = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/ss/'
+
+createDirectory(mediaDes)
+createDirectory(mediaDes)
+createDirectory(imgDes)
+
+
 def cleanup():
-
-    # Specifies locations to transfer to and from
-    source = '/Users/shamikkarkhanis/Desktop/'
-    destination = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/'
-
-    createDirectory(destination)
 
     # Stores names files from source directory in list
     source_files = os.listdir(source)
 
     # Copies all files from source directory then pastes them into destination directory
     for file in source_files:
-
-        #copies file from source and adds to destination
-        shutil.copy(source+file, destination+file)
-
-        # Removes extra copies of original files in source directory
-        os.remove(source+file)
+        moveFiles(file)
+        
 
 # If destination directory does not exist it will make one
-def createDirectory(direc):
-    if not os.path.exists(direc):
-        os.makedirs(direc)
-    
+
+def moveFiles(file):
+    fileExt = os.path.splitext(file)[1]
+    fileName = os.path.splitext(file)[0]
+
+    mediaExt = ['.mp4', '.mp3', '.ma4', '.mov']
+    imgExt = ['.jpeg', '.png', '.jpg']
+
+    if fileExt in mediaExt:
+        shutil.copy(source + file, mediaDes + file)
+    elif 'Screen Shot' in fileName:
+        shutil.copy(source + file, ssDes + file) 
+    elif fileExt.lower() in imgExt:
+        shutil.copy(source + file, imgDes + file)
+
+    os.remove(source+file)
+
 # Runs cleanup() after a certain time repeatedly
 def cleanup_time():
 
@@ -37,6 +53,7 @@ def cleanup_time():
     while True:
         cleanup()
         time.sleep(10)
+
 
 # Starts the timer and cleanup process
 cleanup_time()
