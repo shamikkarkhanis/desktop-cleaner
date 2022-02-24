@@ -47,14 +47,4 @@ def moveFiles(file):
 
     os.remove(source+file)
 
-# Runs cleanup() after a certain time repeatedly
-def cleanup_time():
-
-    # The brain behind the timer
-    while True:
-        cleanup()
-        time.sleep(10)
-
-
-# Starts the timer and cleanup process
-cleanup_time()
+cleanup()
