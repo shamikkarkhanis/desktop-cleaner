@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Created by Shamik Karkhanis on May 22, 2020
 # Edited on Feb 20, 2022
 
