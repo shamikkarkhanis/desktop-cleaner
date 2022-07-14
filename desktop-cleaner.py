@@ -8,10 +8,12 @@ def createDirectory(direc):
     if not os.path.exists(direc):
         os.makedirs(direc)
 
-source = '/Users/shamikkarkhanis/Desktop/'
-mediaDes = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/media/'
-imgDes = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/img/'
-ssDes = '/Users/shamikkarkhanis/Documents/DF_DesktopFiles/ss/'
+source = '' #source directory (should be your desktop or whatever else you want to transfer files from)
+mediaDes = '' #directory for video files
+imgDes = '' #directory for image files
+ssDes = '' #directory for screenshots only
+
+#ideally all the destination directories should be in the same folder for organization but program will work regardless
 
 createDirectory(mediaDes)
 createDirectory(mediaDes)
