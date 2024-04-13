@@ -15,10 +15,12 @@ source = ''
 mediaDes = ''
 imgDes = ''
 ssDes = ''
+miscDes = ''
 
 createDirectory(mediaDes)
 createDirectory(mediaDes)
 createDirectory(imgDes)
+createDirectory(miscDes)
 
 
 def cleanup():
@@ -46,6 +48,8 @@ def moveFiles(file):
         shutil.copy(source + file, ssDes + file)
     elif fileExt.lower() in imgExt:
         shutil.copy(source + file, imgDes + file)
+    else
+        shutil.copy(source + file, miscDes + file)
 
     os.remove(source+file)
 
